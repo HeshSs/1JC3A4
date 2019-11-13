@@ -1,6 +1,6 @@
 {- Assignment 4 Tests
- - Name: TODO add full name
- - Date: TODO add of completion
+ - Name: Hishmat Salehi
+ - Date: 11/11/2019
  -}
 
 import Assign_4
