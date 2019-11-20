@@ -1,6 +1,6 @@
 {- Assignment 4
  - Name: Hishmat Salehi
- - Date: 11/11/2019
+ - Date: 11/17/2019
  -}
 module Assign_4 where
 
@@ -164,22 +164,41 @@ readDiffWrite f g = do  x <- readFile f
  - -----------------------------------------------------------------
  - - Function: readDiffWrite
  - - Test Case Number: 1
- - - Input:  - TODO: add test cases
- - - Expected Output: 
- - - Acutal Output: 
+ - - Input:  readDiffWrite "test.txt" "result.txt"
+ - - Input File: (Quot (Sum (Log (Coef 10.0)) (Prod X X)) (Coef 1.0))
+ - - Output File: Sum (Quot (Coef 0.0) (Coef 10.0)) (Sum X X)
  - -----------------------------------------------------------------
  - - Function: readDiffWrite
  - - Test Case Number: 2
- - - Input:  - TODO: add test cases
- - - Expected Output: 
- - - Acutal Output: 
+ - - Input:  readDiffWrite "test.txt" "result1.txt"
+ - - Input File: (Quot (Sum (Log (Coef 1)) (Prod (Coef 1) X)) (Coef 1))
+ - - Output File: Coef 1.0
  - -----------------------------------------------------------------
  - - Function: readDiffWrite
  - - Test Case Number: 3
- - - Input:  - TODO: add test cases
- - - Expected Output: 
- - - Acutal Output: 
+ - - Input:  readDiffWrite "test.txt" "result2.txt"
+ - - Input File: Quot (Sum (Coef 100) (Prod (Coef 2) X)) X
+ - - Output File: Quot (Sum (Prod (Coef 2.0) X) (Prod (Coef (-1.0)) (Sum (Coef 100.0) (Prod (Coef 2.0) X)))) (Prod X X)
+ - -----------------------------------------------------------------
+ - QuickCheck Test Cases
+ - -----------------------------------------------------------------
+ - - Function: value
+ - - Property: 
+        propValue :: (Floating a, Eq a, Ord a) => MathExpr a -> a -> Bool
+        propValue x y = value (diff x) (y) <= value (x) (y)
+ - - Actual Test Result: Pass
+ - -----------------------------------------------------------------
+ - - Function: simp
+ - - Property: 
+        propSimp :: (Floating a, Eq a, Ord a) => MathExpr a -> a -> Bool
+        propSimp x y = (value (simp x) y) == (value x y)
+ - - Actual Test Result: Pass
+ - -----------------------------------------------------------------
+ - - Function: diff
+ - - Property: 
+        propDiff :: (Floating a, Eq a, Ord a) => MathExpr a -> Bool
+        propDiff x = simp (diff x) == simp (diff (simp x))
+ - - Actual Test Result: Pass
  - -----------------------------------------------------------------
  -
  -}
-
